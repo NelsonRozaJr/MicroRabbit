@@ -10,16 +10,16 @@ namespace MicroRabbit.Banking.Data.Repository
 {
     public class AccountRepository : IAccountRepository
     {
-        private readonly BankingDbContext _bankingDbContext;
+        private readonly BankingDbContext _context;
 
-        public AccountRepository(BankingDbContext bankingDbContext)
+        public AccountRepository(BankingDbContext context)
         {
-            _bankingDbContext = bankingDbContext;
+            _context = context;
         }
 
         public IEnumerable<Account> GetAccounts()
         {
-            return _bankingDbContext.Accounts.ToArray();
+            return _context.Accounts.ToArray();
         }
     }
 }
