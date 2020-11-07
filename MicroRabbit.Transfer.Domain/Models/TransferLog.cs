@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MicroRabbit.Transfer.Domain.Models
 {
@@ -13,5 +11,7 @@ namespace MicroRabbit.Transfer.Domain.Models
         public int ToAccount { get; set; }
 
         public decimal TransferAmount { get; set; }
+
+        public DateTime CreateDate { get; set; }
     }
 }

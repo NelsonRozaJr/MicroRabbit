@@ -3,6 +3,7 @@ using MicroRabbit.Banking.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MicroRabbit.Banking.Application.Interfaces
 {
@@ -10,6 +11,6 @@ namespace MicroRabbit.Banking.Application.Interfaces
     {
         IEnumerable<Account> GetAccounts();
 
-        void Transfer(AccountTransfer accountTransfer);
+        Task<bool> Transfer(AccountTransfer accountTransfer);
     }
 }

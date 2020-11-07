@@ -2,6 +2,7 @@
 using MicroRabbit.Transfer.Domain.Events;
 using MicroRabbit.Transfer.Domain.Interfaces;
 using MicroRabbit.Transfer.Domain.Models;
+using System;
 using System.Threading.Tasks;
 
 namespace MicroRabbit.Transfer.Domain.EventHandlers
@@ -21,7 +22,8 @@ namespace MicroRabbit.Transfer.Domain.EventHandlers
             {
                 FromAccount = @event.From,
                 ToAccount = @event.To,
-                TransferAmount = @event.Amount
+                TransferAmount = @event.Amount,
+                CreateDate = DateTime.Now
             });
 
             return Task.CompletedTask;

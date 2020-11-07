@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MicroRabbit.Banking.Domain.Models
 {
@@ -11,5 +9,7 @@ namespace MicroRabbit.Banking.Domain.Models
         public string AccountType { get; set; }
 
         public decimal AccountBalance { get; set; }
+
+        public DateTime? UpdateDate { get; set; }
     }
 }

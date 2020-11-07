@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MicroRabbit.Banking.Application.Services
 {
@@ -29,10 +30,16 @@ namespace MicroRabbit.Banking.Application.Services
             return _accountRepository.GetAccounts();
         }
 
-        public void Transfer(AccountTransfer accountTransfer)
+        public async Task<bool> Transfer(AccountTransfer accountTransfer)
         {
-            var createTransferCommand = new CreateTransferCommand(accountTransfer.FromAccount, accountTransfer.ToAccount, accountTransfer.TransferAmount);
-            _bus.SendCommand(createTransferCommand);
+            var processTransfer = await _accountRepository.ProcessTransferAsync(accountTransfer.FromAccount, accountTransfer.ToAccount, accountTransfer.TransferAmount);
+            if (processTransfer)
+            {
+                var createTransferCommand = new CreateTransferCommand(accountTransfer.FromAccount, accountTransfer.ToAccount, accountTransfer.TransferAmount);
+                await _bus.SendCommand(createTransferCommand);
+            }
+
+            return processTransfer;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MicroRabbit.Transfer.Data.Context;
 using MicroRabbit.Transfer.Domain.Interfaces;
 using MicroRabbit.Transfer.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,6 +18,8 @@ namespace MicroRabbit.Transfer.Data.Repository
 
         public void Add(TransferLog transferLog)
         {
+            transferLog.CreateDate = DateTime.Now;
+
             _context.TransferLogs.Add(transferLog);
             _context.SaveChanges();
         }
